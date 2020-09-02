@@ -106,7 +106,7 @@ app.get('/info', (req, res) => {
     console.log(`${days[today.getDay()]} ${months[today.getMonth()]} ${today.getDate()} ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()} UTC ${today.getTimezoneOffset()/60}`)
 })
 
-const PORT = proccess.env.PORT || 3001
+const PORT = proccess.env.PORT
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
