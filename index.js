@@ -5,6 +5,7 @@ const { response, json } = require('express')
 const app = express()
 
 app.use(cors())
+app.use(express.static('build'))
 app.use(express.json())
 
 morgan.token("body", function (req, res) {
@@ -106,7 +107,7 @@ app.get('/info', (req, res) => {
     console.log(`${days[today.getDay()]} ${months[today.getMonth()]} ${today.getDate()} ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()} UTC ${today.getTimezoneOffset()/60}`)
 })
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
