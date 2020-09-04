@@ -1,1 +1,1 @@
-GET https://cryptic-anchorage-10233.herokuapp.com/api/persons/
+GET http://localhost:3001/api/persons
