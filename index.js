@@ -59,32 +59,6 @@ app.post('/api/persons', (request, response) => {
         response.json(savedPerson)
         })
 })
-    
-    // const body = request.body
-
-    // if (!body.name) {
-    //     return response.status(400).json({
-    //         error: 'name missing',
-    //     })
-    // } else if (!body.number){
-    //     return response.status(400).json({
-    //         error: 'number missing'
-    //     })
-    // } else if (nameExists(body.name)) {
-    //     return response.status(400).json({
-    //         error: 'name must be unique (already exists)'
-    //     })
-    // }
-    // const person = {
-    //     name: body.name,
-    //     number: body.number,
-    //     id: generateId()
-    // }
-
-    // persons = persons.concat(person)
-
-    // response.send(person)
-    // })
 
 app.get('/info', (request, response) => {
     let today = new Date()
