@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "lint": "eslint .",
     "dev": "node_modules/.bin/nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../phonebook-frontend && npm run build --prod && cp -r build ../phonebook-backend",

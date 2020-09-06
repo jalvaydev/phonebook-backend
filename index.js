@@ -1,26 +1,25 @@
 const mongoose = require('mongoose')
-require("dotenv").config();
+require('dotenv').config();
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const { response, json } = require('express')
 const app = express()
 const Person = require('./models/person');
-const { update } = require('./models/person');
 
 app.use(cors())
 app.use(express.static('build'))
 app.use(express.json())
 
-morgan.token("body", function (request, response) {
-  return JSON.stringify(request.body);
-});
+morgan.token('body', function (request, response) {
+    return JSON.stringify(request.body);
+})
 
 app.use(
-  morgan(
-    ":method :url :status :response-time ms :body"
-  )
-);
+    morgan(
+        ':method :url :status :response-time ms :body'
+    )
+)
 
 app.get('/api/persons', (request, response) => {
     Person.find({}).then(person => {
@@ -55,10 +54,10 @@ app.put('/api/persons/:id', (request, response, next) => {
     }
     console.log(body.name, body.number, request.params.id)
     Person.findByIdAndUpdate(request.params.id, person, {new:true})
-    .then(updatedPerson => {
-        console.log("UpdatedPerson: ",updatedPerson)
-        response.json(updatedPerson)
-    }).catch(error => next(error))
+        .then(updatedPerson => {
+            console.log("UpdatedPerson: ",updatedPerson)
+            response.json(updatedPerson)
+        }).catch(error => next(error))
 })
 
 app.post('/api/persons', (request, response, next) => {
@@ -98,13 +97,13 @@ const errorHandler = (error, request, response, next) => {
     console.error(error.message)
   
     if (error.name === 'CastError') {
-      return response.status(400).send({ error: 'malformatted id' })
+        return response.status(400).send({ error: 'malformatted id' })
     } else if (error.name === 'ValidationError') {    
         return response.status(400).json({ error: error.message })  
     }
   
     next(error)
-  }
+}
   
 app.use(errorHandler)
 
